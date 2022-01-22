@@ -1,16 +1,17 @@
 <?php
- $namaserver  ="localhost";
- $namauser="root";
- $katasandi="";
- $nama_db="13_zuhri";
 
- $koneksi = mysqli_connect($namaserver,$namauser,$katasandi,$nama_db);
+$server     = "localhost";
+$username   = "root";
+$password   = "";
+$db         = "05_mywebsite_12rpl2";
 
-//  if(!$koneksi){
-//      die("koneksi gagal".mysqli_connect_error());
+$koneksi = mysqli_connect($server, $username, $password, $db);
 
-//  } else{
-//      echo "koneksi berhasil";
-//  }
+if (!$koneksi) {
+    die("koneksi gagal </h2><br>".mysqli_connect_eror()."<br>".mysqli_connect_errno());
+} 
+// else{
+//     echo "Koneksi Berhasil"
+
 
 ?>

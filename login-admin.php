@@ -10,50 +10,55 @@
 <body>
     <div class="container-fluid">
         <div class="row mt-5">
-        <div class="col-lg-3 col-sm-1"></div>
+            <div class="col-lg-3 col-sm-1"></div>
             <div class="col-lg-6 col-sm-10">
                 <div class="container border border-grey rounded mt-5">
                     <div class="login-box p-3">
+                        <center><h2>Administrator Login</h2></center>
                         <form action="" method="post">
-                                <div class="mb-3 mt-3">
-                                    <label for="username" class="form-label">Username</label>
-                                    <input type="text" name="username" class="form-control" id="username">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label">Password</label>
-                                    <input type="password" name="password" class="form-control" id="password">
-                                </div>
-                                <div class="mb-3 form-check">
-                                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                    <label class="form-check-label" for="exampleCheck1">rememberme</label>
-                                </div>
-                                <button type="submit" name="login" class="btn btn-primary">Submit</button>
-                        </form>
+                        <div class="mb-3">
+                        <label for="username" class="form-label">username</label>
+                        <input type="text" name="username" class="form-control" id="username" >
+                        
                     </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control" id="password">
+                    </div>
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Rememberme</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
                 </div>
             </div>
-        <div class="col-lg-3 col-sm-1"></div>
+            <div class="col-lg-3"></div>
         </div>
     </div>
     <?php
-include('koneksi.php');
-
-    if (isset($_POST['login'])) {
-        $username= $_POST['username'];
-        $password=$_POST['password'];
-        $query= mysqli_query($koneksi,"SELECT * FROM user WHERE username = '$username' && password = '$password'");
-        // if(($user == $_POST['username'])&& ($katasandi == $_POST['password'])){
-        if(mysqli_num_rows($query)>0){
-            header('location:sukses.php');
-        }else{
-            ?>
-            <script>
-                alert("username/password salah")
-            </script>
-            <?php
+    include('koneksi.php');
+        if (isset($_POST['login'])) {
+             $username = $_POST['username'];
+             $password = $_POST['password'];
             
-        } 
-    }
-?>
+            $query = mysqli_query($konek,"SELECT * FROM petugas WHERE username = '$username' && password = '$password'");
+
+           if (mysqli_num_rows($query)>0) {
+                ?>
+                <script>
+                   alert('Anda Berhasil Login !!!!')
+                   window.location.href='http:http://localhost/website2-main/login-admin.php';
+                </script>
+                <?php
+           }else{
+               ?>
+               <script>
+                   alert('Username atau Password anda salah !!!!')
+               </script>
+               <?php
+           }
+        }
+    ?>
 </body>
 </html>
